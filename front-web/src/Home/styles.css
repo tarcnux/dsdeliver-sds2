@@ -1,4 +1,4 @@
-.home-container {
+.home-container {    
     padding-top: 100px;
     height: calc(100vh - 254px);
   }
@@ -88,8 +88,16 @@
   }
   
   @media (max-height: 700px) {
-    .home-container {
+    /* .home-container {
       height: auto;
       margin-bottom: 30px;
+    } */
+    .home-content {
+      height: 70%;
+      margin-top: -40px;
+    }
+    
+    .home-image svg {
+      height: 70%;
     }
   }
