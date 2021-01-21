@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, Linking, StyleSheet, Text, View } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { confirmDelivery } from '../api';
 import Header from '../Header';
@@ -34,6 +34,10 @@ export default function OrderDetails({ route }: Props) {
       Alert.alert(`Erro ao confirmar pedido ${order.id}.`);
     })
   }
+
+  const handleStartNavigation = () => {
+    Linking.openURL(`https://www.google.com/maps/dir/?api=1&travelmode=driving&dir_action=navigate&destination=${order.latitude},${order.longitude}`)
+  }
   
   return (
     <>
@@ -41,7 +45,7 @@ export default function OrderDetails({ route }: Props) {
     <View style={styles.container}>
       <OrderCard order={order} />
       <RectButton style={styles.button}>
-        <Text style={styles.buttonText}>INCIAR NAVEGAÇÃO</Text>
+        <Text style={styles.buttonText} onPress={handleStartNavigation}>INCIAR NAVEGAÇÃO</Text>
       </RectButton>
       <RectButton style={styles.button} onPress={handleConfirmDelivery}>
         <Text style={styles.buttonText}>CONFIRMAR ENTREGA</Text>
